@@ -4,7 +4,7 @@
   "description": "Open-source specification and zero-dependency linter for eliminating AI slop, enforcing natural direct answers, and structuring agent communications.",
   "main": "bin/cli.js",
   "bin": {
-    "writing-systems": "./bin/cli.js"
+    "writing-systems": "bin/cli.js"
   },
   "scripts": {
     "test": "python3 scripts/check_writing.py AGENTS.md README.md skills/writing-systems/SKILL.md docs/*.md",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chama-x/writing-systems.git"
+    "url": "git+https://github.com/chama-x/writing-systems.git"
   },
   "keywords": [
     "ai",
