@@ -1,6 +1,6 @@
 {
   "name": "writing-systems",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open-source specification and zero-dependency linter for eliminating AI slop, enforcing natural direct answers, and structuring agent communications.",
   "main": "bin/cli.js",
   "bin": {
