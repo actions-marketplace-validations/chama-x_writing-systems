@@ -7,13 +7,13 @@ Machine coordination requires typed schemas and zero conversational tokens.
 ## 1. The Shannon Limit Principle
 
 Natural language introduces entropy and parsing overhead between automated agents.
-- **Zero Conversational Fluff:** Omit greetings, politeness tokens, and summaries.
-- **Explicit State Mutations:** Report data modifications as deterministic diffs.
-- **Schema Validation:** Validate automated state payloads against a strict JSON Schema.
+- Zero Conversational Fluff: Omit greetings, politeness tokens, and summaries.
+- Explicit State Mutations: Report data modifications as deterministic diffs.
+- Schema Validation: Validate automated state payloads against a strict JSON Schema.
 
 ### Operational Separation: State RPCs vs. Subagent Reports
-1. **Automated State Mutations (RPCs):** Use the typed JSON Schema below. No natural language permitted.
-2. **Analytical & Research Subagents:** Use Minto BLUF structured Markdown. Deliver findings concisely without conversational filler.
+1. Automated State Mutations (RPCs): Use the typed JSON Schema below. No natural language permitted.
+2. Analytical & Research Subagents: Use structured Markdown with immediate direct answers. Deliver findings concisely without conversational filler.
 
 ---
 
@@ -72,18 +72,18 @@ Analytical subagents return structured Markdown when tasks require code audits, 
 
 ### 3.1 Envelope Structure
 Structure every analytical response according to this three-tier envelope:
-1. **Executive BLUF:** Deliver the governing finding or verdict in the first 50 tokens.
-2. **Empirical Findings:** Group observations with 2 to 4 word bold anchors. Include file paths and line ranges.
-3. **Actionable Diffs:** Provide exact drop-in replacements or commands rather than open-ended recommendations.
+1. Direct Verdict: Deliver the governing finding or verdict immediately in the first sentence. Never write the word "BLUF" or create artificial summary headers.
+2. Empirical Findings: State observations directly using natural bullet points with verbs or facts. Include file paths and line ranges.
+3. Actionable Diffs: Provide exact drop-in replacements or commands rather than open-ended recommendations.
 
 ### 3.2 Subagent Response Exemplar
-```markdown
-### BLUF: Database Migration Failed Due to Locked Schema Table
+````markdown
+### Database Migration Failed Due to Locked Schema Table
 The PostgreSQL migration failed at 02:14 UTC because table billing_events held an active lock.
 
 #### 1. Empirical Findings
-- **Lock Contention:** Worker process 8421 held an open transaction on billing_events for 42 minutes.
-- **Timeout Trigger:** Migration script timed out after 300 seconds at line 48 in migrations/004_add_index.sql.
+- Worker process 8421 held an open transaction on billing_events for 42 minutes.
+- Migration script timed out after 300 seconds at line 48 in migrations/004_add_index.sql.
 
 #### 2. Actionable Fix
 Terminate the blocking worker and retry migration:
@@ -91,5 +91,4 @@ Terminate the blocking worker and retry migration:
 SELECT pg_terminate_backend(8421);
 ./scripts/migrate.sh --retry
 ```
-```
-
+````

@@ -10,9 +10,9 @@
 
 ## The Problem
 
-AI assistants (ChatGPT, Claude, Gemini, Copilot) pad their answers with filler words. They open with *"Certainly! In today's fast-paced world…"* before reaching the actual point. This wastes your time and burns tokens, which cost money.
+AI assistants waste time and burn tokens with conversational fluff. They open with corporate buzzwords and robotic formality before reaching the point.
 
-**Writing Systems fixes this.** Drop a rules file into your project. AI reads it, then writes shorter and clearer answers.
+Writing Systems fixes this immediately. Drop a single rules file into your project. AI reads it and writes short, direct answers.
 
 ---
 
@@ -28,18 +28,18 @@ AI assistants (ChatGPT, Claude, Gemini, Copilot) pad their answers with filler w
 │ monolithic binary could foster significant performance improvements..."        │
 └────────────────────────────────────────────────────────────────────────────────┘
 
-┌── ✅ AFTER: With Writing Systems (84 tokens - 73% shorter) ───────────────────┐
+┌── ✅ AFTER: With Writing Systems (78 tokens - 75% shorter) ───────────────────┐
 │ Migrate event ingestion from microservices to a single Go daemon.             │
 │                                                                                │
 │ Microservices added 42ms of latency and three network failure points.         │
 │ A single daemon delivers three improvements:                                  │
-│ - Cost: Saves $18,000/month in AWS data transfer fees.                        │
-│ - Speed: Cuts 99th-percentile latency from 58ms to 6ms.                       │
-│ - Simplicity: Removes cross-service serialization; logs stay local.           │
+│ - Cut AWS data transfer fees by $18,000/month.                                │
+│ - Lower 99th-percentile latency from 58ms to 6ms.                             │
+│ - Remove cross-service serialization so logs stay local.                      │
 └────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Same information. 73% fewer words. The answer comes first.
+Same information. 75% fewer words. The answer comes first.
 
 ---
 
@@ -70,43 +70,43 @@ This copies the writing rules into your project. No packages are installed perma
 
 ## The 5 Writing Rules (Plain English)
 
-These five rules are the core of the system. Every one exists to save the reader's time.
+These five rules are the core of the system. Every rule exists to save the reader's time and tokens.
 
 ### 1. Lead with the Answer
 
-> Don't warm up. Don't introduce yourself. Start with the conclusion, the decision, or the action.
+> Start immediately with the conclusion, decision, or status in sentence 1. Never write the word "BLUF" or generate artificial summary headers.
 
-**Bad:** *"After careful consideration of various factors…"*
-**Good:** *"Use PostgreSQL. Here's why."*
+**Bad:** *"After careful consideration of various factors…"*  
+**Good:** *"Use PostgreSQL. Here is why."*
 
-### 2. Keep Sentences Short
+### 2. Speak Plain Human English
 
-> Instructions: 20 words max. Descriptions: 25 words max. If a sentence needs a deep breath to read aloud, split it.
+> Talk like a pragmatic engineer discussing systems with a teammate. Ban corporate buzzwords, pseudo-academic jargon, robotic formality, and unprompted tutorials.
 
-### 3. Vary Your Rhythm
+### 3. Keep Sentences Short
 
-> Mix short punchy sentences with longer explanatory ones. Avoid four sentences in a row that all sound the same length - it puts readers to sleep.
+> Instructions: 20 words max. Descriptions: 25 words max. Cap paragraphs at 3 sentences. If a sentence needs a deep breath to read aloud, split it.
 
-### 4. Say What You Mean
+### 4. Write Natural Bullet Points
 
-> No vague phrases like *"a rich ecosystem of modular components."* State the actual system behavior. Readers need facts, not decoration.
+> Lead list items directly with verbs or facts. Never prefix items with redundant bold category labels like `- **Deleted:** Removed the file...`.
 
-### 5. One Name Per Thing
+### 5. Say What You Mean
 
-> Pick one term for each concept and stick with it. If you call it a "daemon" once, don't switch to "service" or "process" later in the same document.
+> State operational facts directly without decorative metaphors. Pick one canonical name for each component and maintain it consistently across all documents.
 
 <details>
-<summary><strong>📘 What are the formal names for these rules?</strong></summary>
+<summary><strong>📘 Core rule mapping and descriptions</strong></summary>
 
-If you read academic papers or see these terms in the codebase, here's the mapping:
+Here is how these five rules map to operational constraints:
 
-| Plain Name | Formal Name | Origin |
+| Plain Name | Core Invariant | Operational Rule |
 | :--- | :--- | :--- |
-| Lead with the Answer | Minto BLUF (Bottom Line Up Front) | Barbara Minto's *The Pyramid Principle*, U.S. military communication doctrine |
-| Keep Sentences Short | ASD-STE100 Controlled Syntax | Aerospace & Defence Industries Association of Europe - used in aircraft maintenance manuals |
-| Vary Your Rhythm | Cadence Variance | Composition theory and readability research |
-| Say What You Mean | Literal Precision | Technical writing best practices |
-| One Name Per Thing | Ubiquitous Language | Eric Evans' *Domain-Driven Design* (2003) |
+| Lead with the Answer | Natural Direct Answers | Deliver the verdict in sentence 1; omit artificial headers |
+| Speak Plain English | Plain Human English | Pragmatic engineering tone; ban AI slop and tutorials |
+| Keep Sentences Short | Controlled Syntax | Concise cognitive bounds (<20w procedural, <25w descriptive) |
+| Natural Bullet Points | Natural List Items | Lead with verbs/facts; eliminate bold label stutters |
+| Say What You Mean | Literal Precision | Concrete mechanics and canonical entity naming |
 
 </details>
 
@@ -136,24 +136,24 @@ Add the linter to your CI pipeline so pull requests get checked automatically:
 Or run checks locally before pushing:
 
 ```bash
-python3 scripts/check_writing.py docs/*.md
+python3 scripts/check_writing.py
 ```
 
-The script checks sentence length, detects filler words, and flags common problems. It needs only Python 3 - no extra packages.
+Run the linter locally to catch errors. The script flags long clauses and banned filler words using zero external dependencies.
 
 ### 🔴 Expert - "I want to customize the rules for my team"
 
-The `docs/` folder contains specialized guides you can modify:
+Explore the `docs/` directory to tailor individual guides for your team's specific workflow:
 
 | Guide | Covers |
 | :--- | :--- |
-| [core-principles.md](docs/core-principles.md) | The cognitive science behind each rule - working memory limits, information foraging theory |
+| [core-principles.md](docs/core-principles.md) | Operational rules, thresholds, and rationale |
 | [human-prose.md](docs/human-prose.md) | Technical documents: architecture decisions, RFCs, code reviews, specifications |
 | [ui-microcopy.md](docs/ui-microcopy.md) | Button labels, error messages, CLI help text, form validation messages |
 | [prompt-engineering.md](docs/prompt-engineering.md) | Writing system prompts for AI agents and assistants |
 | [inter-agent-protocols.md](docs/inter-agent-protocols.md) | Structured JSON communication between AI agents in multi-agent systems |
 
-Every rule in `AGENTS.md` traces back to a principle in `docs/core-principles.md`. Change the principle, and you change the rule.
+Every rule in `AGENTS.md` traces back to an operational invariant in `docs/core-principles.md`. Change the principle, and you change the rule.
 
 ---
 
@@ -164,7 +164,7 @@ writing-systems/
 ├── AGENTS.md               # The writing rules - AI tools read this file
 ├── bin/cli.js              # The "npx writing-systems init" scaffolder
 ├── docs/                   # Detailed guides for each writing context
-│   ├── core-principles.md  # Why each rule exists (the science)
+│   ├── core-principles.md  # Core rules, thresholds, and operational constraints
 │   ├── human-prose.md      # Rules for technical documentation
 │   ├── ui-microcopy.md     # Rules for UI text and error messages
 │   ├── prompt-engineering.md   # Rules for AI system prompts
@@ -200,9 +200,9 @@ Any tool that reads an `AGENTS.md` or `CLAUDE.md` file from your project root, o
 <details>
 <summary><strong>Do I need Node.js or Python?</strong></summary>
 
-- **Node.js** is needed only for the one-time `npx writing-systems init` setup command. After that, you can delete Node if you want - the generated files are plain Markdown.
-- **Python 3** is needed only if you want to run the automated linter (`check_writing.py`). The linter has zero dependencies beyond the Python standard library.
-- **Neither** is required if you just copy the `AGENTS.md` file manually.
+- Node.js is needed only for the one-time `npx writing-systems init` setup command. After that, you can delete Node if you want - the generated files are plain Markdown.
+- Python 3 is needed only if you want to run the automated linter (`check_writing.py`). The linter has zero dependencies beyond the Python standard library.
+- Neither is required if you just copy the `AGENTS.md` file manually.
 
 </details>
 

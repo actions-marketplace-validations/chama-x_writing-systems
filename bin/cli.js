@@ -66,7 +66,7 @@ function handleInit() {
   console.log(`\n✨ Initialization complete! (${copiedCount} items installed)`);
   console.log('\nNext steps:');
   console.log('  1. Review AGENTS.md in your repository root.');
-  console.log('  2. Run verification: python3 scripts/check_writing.py docs/*.md\n');
+  console.log('  2. Run verification: python3 scripts/check_writing.py\n');
 }
 
 function handleCheck() {
@@ -77,7 +77,7 @@ function handleCheck() {
   }
 
   const args = process.argv.slice(3);
-  const checkArgs = args.length > 0 ? args : ['AGENTS.md', 'README.md', 'docs/*.md'];
+  const checkArgs = args.length > 0 ? args : [];
 
   const py = spawnSync('python3', [scriptPath, ...checkArgs], {
     stdio: 'inherit',
@@ -94,14 +94,14 @@ function handleInfo() {
 ======================================================
 
 The open-source specification for eliminating conversational AI slop,
-enforcing Minto BLUF, and ensuring deterministic multi-agent state diffs.
+enforcing natural direct answers, and ensuring deterministic agent outputs.
 
 The 5 Universal Invariants:
-  1. Minto BLUF: First 50 tokens deliver the decisive finding.
-  2. Controlled Syntax: Max 20w (procedural) / 25w (descriptive).
-  3. Cadence Variance: Alternate crisp assertions with compound mechanics.
-  4. Literal Precision: State concrete system mechanics directly.
-  5. Ubiquitous Language: Canonical domain terms across all entities.
+  1. Natural Direct Answers: Deliver the answer or decision immediately in sentence 1.
+  2. Plain Human English: Speak like a pragmatic human engineer without AI buzzwords.
+  3. Controlled Syntax: Max 20w (procedural) / 25w (descriptive).
+  4. Natural Bullet Points: Lead list items directly with verbs or facts without bold prefixes.
+  5. Literal Precision & Canonical Terms: State facts directly and maintain one term per entity.
 
 Usage:
   npx writing-systems init    Scaffold AGENTS.md and linters into current repo
