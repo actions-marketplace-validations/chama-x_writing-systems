@@ -1,5 +1,5 @@
 name: 'AI Writing Systems Linter'
-description: 'Automated linter enforcing Minto BLUF, Controlled Syntax, and Anti-Slop regularizers in Markdown.'
+description: 'Automated linter enforcing natural direct answers, controlled syntax, and anti-slop regularizers in Markdown.'
 author: 'Chamath Thiwanka'
 branding:
   icon: 'edit-3'

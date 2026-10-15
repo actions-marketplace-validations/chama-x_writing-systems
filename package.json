@@ -1,31 +1,32 @@
 {
   "name": "writing-systems",
   "version": "1.0.0",
-  "description": "Open-source specification and zero-dependency linter for eliminating AI slop, enforcing Minto BLUF, and structuring agent communications.",
+  "description": "Open-source specification and zero-dependency linter for eliminating AI slop, enforcing natural direct answers, and structuring agent communications.",
   "main": "bin/cli.js",
   "bin": {
-    "writing-systems": "./bin/cli.js"
+    "writing-systems": "bin/cli.js"
   },
   "scripts": {
     "test": "python3 scripts/check_writing.py AGENTS.md README.md skills/writing-systems/SKILL.md docs/*.md",
-    "lint": "python3 scripts/check_writing.py docs/*.md",
+    "lint": "python3 scripts/check_writing.py",
     "start": "node bin/cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chama-x/writing-systems.git"
+    "url": "git+https://github.com/chama-x/writing-systems.git"
   },
   "keywords": [
     "ai",
     "writing-systems",
     "agents",
     "agents-md",
-    "minto-bluf",
-    "asd-ste100",
+    "plain-english",
+    "direct-answers",
     "prompt-engineering",
     "claude-code",
     "antigravity",
     "codex",
+    "cursor",
     "linter",
     "developer-tools"
   ],

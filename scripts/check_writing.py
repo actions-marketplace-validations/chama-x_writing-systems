@@ -173,8 +173,11 @@ def check_file(filepath: Path):
 
 def main():
     if len(sys.argv) < 2:
-        target_dir = Path("docs")
-        files = list(target_dir.glob("*.md")) if target_dir.exists() else []
+        repo_root = Path(__file__).resolve().parent.parent
+        files = [
+            p for p in sorted(repo_root.rglob("*.md"))
+            if not any(part.startswith(".") or part == "node_modules" for part in p.parts)
+        ]
     else:
         files = [Path(p) for p in sys.argv[1:]]
 

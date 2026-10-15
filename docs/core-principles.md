@@ -1,60 +1,58 @@
-# Core Principles: Cognitive Clarity & Linguistic Science
+# Core Principles: Operational Clarity & Human-First Writing
 
-Digital readers scan technical text for immediate operational answers. This document outlines the working memory constraints and linguistic invariants that govern this writing system.
-
----
-
-## 1. Minto BLUF (Bottom Line Up Front)
-
-Human working memory decays within two seconds. Multi-clausal sentences flood this fragile buffer and force readers to drop their operational task goals.
-- **Cognitive Decay:** Readers evict architectural goals when preambles delay critical conclusions.
-- **BLUF Invariant:** Deliver the governing finding, trade-off, or operational action in the first 50 tokens.
-- **Three Archetypes:** Apply Action BLUFs for procedures, Conditional BLUFs for bi-modal trade-offs, and Diagnostic BLUFs for investigations.
-- **Information Foraging:** Front-load operative nouns and verbs to provide immediate information scent.
+Digital readers scan technical text for immediate operational answers. This guide defines the rules, thresholds, and operational rationale behind our writing system.
 
 ---
 
-## 2. Controlled Syntax (ASD-STE100 Heuristic)
+## 1. Natural Direct Answers
 
-Aerospace engineers developed ASD-STE100 to eliminate ambiguity. Adapting these constraints to software documentation ensures that readers process technical descriptions without cognitive strain.
-
-### The Production Rules:
-1. **Sentence Word Ceilings:**  
-   - Procedural instructions: Maximum 20 words per sentence.
-   - Descriptive statements: Maximum 25 words per sentence.
-2. **Voice Separation:**  
-   - Procedural: Active imperative ("Inspect the manifold").
-   - Descriptive: Active declarative ("The manifold regulates pressure").
-3. **Noun Stack Cap:**  
-   - Maximum 3 consecutive nouns. Convert "production database cluster failure rate" -> "failure rate of the production database cluster."
-4. **Paragraph Ceiling:**  
-   - Maximum 3 sentences per paragraph block.
-5. **Two-Tier Enforcement:**  
-   - Prompt directives enforce cognitive clarity, while background linters verify mechanical word counts.
+Start immediately with the decisive conclusion or status.
+- Lead with the verdict on token 1.
+- Never write the word "BLUF" or create artificial summary labels like `### BLUF:`.
+- Omit conversational greetings, pleasantries, and introductory throat-clearing.
 
 ---
 
-## 3. Cadence Variance (Expository Prose)
+## 2. Plain Human English
 
-Monotonous rhythm numbs the reader. Alternating punchy five-word assertions with twenty-word compound explanations maintains engagement and mirrors human thought.
-- **Cadence Alternation:** In explanatory text, alternate punchy assertions (5–10 words) with compound mechanics (15–25 words).
-- **Uniform Cadence Ban:** Avoid monotonous runs of four consecutive sentences of identical length.
-- **Complete Propositions:** Every sentence must contain a subject and predicate. Ban artificial telegraphic fragments.
-- **Structural Exemptions:** Checklists, runbooks, tables, and UI microcopy are exempt from cadence variance.
-
----
-
-## 4. Literal Precision
-
-Metaphors obscure system mechanics. Technical readers need direct statements of architectural reality to diagnose failures accurately under operational pressure.
-- **Physical Grounding:** State physical, operational, and architectural truths directly.
-- **Metaphor Elimination:** Substitute explicit system behavior for decorative idioms or figurative analogies.
+Write like a pragmatic engineer discussing systems with a peer.
+- Reject corporate buzzwords, pseudo-academic terminology, and robotic formality.
+- Never provide unprompted elementary tutorials or lecture on basic concepts.
+- Describe what the system or code actually does using concrete mechanics.
 
 ---
 
-## 5. Ubiquitous Language (Domain-Driven Design)
+## 3. Controlled Syntax
 
-Synonyms fracture conceptual integrity. Using multiple labels for the same entity forces engineers to pause and evaluate false distinctions.
-- **Canonical Terminology:** Assign exactly one term to each domain concept within a bounded context. Never alternate between synonyms.
-- **Grammatical Cohesion:** Pronouns (`it`, `they`) remain valid for local cohesion once an entity is named.
+Bound sentence lengths strictly. Long, convoluted clauses slow down comprehension and introduce bugs during incident triage.
+- Procedural limits: Maximum 20 words per sentence using active imperative voice ("Restart the daemon").
+- Descriptive limits: Maximum 25 words per sentence using active declarative voice ("The daemon manages memory").
+- Paragraph limits: Maximum 3 sentences per paragraph block.
+- Noun stacks: Maximum 3 consecutive nouns. Convert "database server connection pool leak" to "connection pool leak on the database server".
 
+---
+
+## 4. Natural Bullet Points
+
+Lists should scan instantly without synthetic AI stutter.
+- Lead list items directly with verbs or facts (e.g., "- Deleted unused routes to cut memory").
+- Avoid redundant bold category prefixes (e.g., avoid "- **Deleted:** Removed the file...").
+- Match grammatical structure across items in the same list.
+
+---
+
+## 5. Cadence Variance
+
+Vary rhythm in expository prose. Alternating short claims with compound mechanics keeps explanations engaging and clear.
+- Alternate punchy assertions (5–10 words) with compound explanations (15–25 words).
+- Avoid four consecutive sentences of nearly identical length.
+- Exempt checklists, tables, code blocks, and UI strings from cadence checks.
+
+---
+
+## 6. Literal Precision & Canonical Terms
+
+Ambiguity breaks production systems. Engineers need exact mechanics and consistent entity naming to diagnose failures quickly.
+- Replace decorative analogies and metaphors with concrete system behaviors.
+- Use a single canonical name for each component across all documents.
+- Keep standard pronouns (`it`, `they`) for local flow once named.
